@@ -2,8 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Redirect
 } from "react-router-dom";
 import CalendarScreen from '../components/calendar/CalendarScreen';
 import AuthRouter from './AuthRouter';
@@ -16,8 +15,9 @@ const AppRouter = () => {
     <Router>
       <div>
         <Switch>
-          <PublicRoute path="/auth" component={AuthRouter}  />
-          <PrivateRoute path="/" component={CalendarScreen} />
+          <PublicRoute  path="/auth" component={AuthRouter} />
+          <PrivateRoute exact={true} path="/" component={CalendarScreen} />
+          <Redirect to="/auth/login" />
         </Switch>
       </div>
     </Router>
