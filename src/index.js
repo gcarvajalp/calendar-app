@@ -6,6 +6,9 @@ import './styles.css';
 import './modal.css';
 import './datepicker.css';
 
+
+console.log(process.env);
+
 ReactDOM.render(
   <React.StrictMode>
     <CalendarApp />
