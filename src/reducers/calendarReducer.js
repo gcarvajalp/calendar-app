@@ -5,7 +5,6 @@ const initialState = {
     title: 'Cumpleaños del jefe',
     start: moment().toDate(),
     end: moment().add(2, 'hours').toDate(),
-    bgcolor: '#fafafa',
     notes: 'Comprar el pastel',
     user: {
       _id: 123,
@@ -54,6 +53,19 @@ export const calendarReducer = (state = initialState, action) => {
         events: state.events.filter(
           e => (e.id !== state.activeEvent.id)
         ),
+        activeEvent: null
+      }
+
+    case types.eventLoaded:
+      return {
+        ...state,
+        events: [...action.payload]
+      }
+
+    case types.eventLogout:
+      return {
+        ...state,
+        events: [],
         activeEvent: null
       }
 

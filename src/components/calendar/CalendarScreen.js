@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ import { messages } from '../../helpers/calendar-messages-es';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
 import { uiOpenModal } from '../../actions/ui';
-import { eventClearActiveEvent, eventSetActive } from '../../actions/events';
+import { eventClearActiveEvent, eventSetActive, eventStartLoading } from '../../actions/events';
 import AddNewFab from '../ui/AddNewFab';
 import DeleteEventFab from '../ui/DeleteEventFab';
 
@@ -34,15 +34,21 @@ const localizer = momentLocalizer(moment);
 const CalendarScreen = () => {
 
   const dispatch = useDispatch();
+
   //TODO: leer del store, los eventos
   const { events, activeEvent } = useSelector(state => state.calendar);
+  const { uid } = useSelector(state => state.auth);
 
   const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'month');
+
+  useEffect(() => {
+    dispatch(eventStartLoading());
+  }, [dispatch]);
 
   const eventStyleGFetter = (event, start, end, isSelected) => {
 
     const style = {
-      backgroundColor: '#367CF7',
+      backgroundColor: (uid === event.user._id) ? '#367CF7' : '#465660',
       borderRarius: '0px',
       opacity: 0.8,
       display: 'block'

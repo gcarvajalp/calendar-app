@@ -5,7 +5,7 @@ import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 import Swal from 'sweetalert2';
 import { uiCloseModal } from '../../actions/ui';
-import { eventStartAddNew, eventClearActiveEvent, eventUpdated } from '../../actions/events';
+import { eventStartAddNew, eventClearActiveEvent, eventStartUpdate } from '../../actions/events';
 
 
 const customStyles = {
@@ -102,7 +102,7 @@ const CalendarModal = () => {
 
     //TODO: realizar grabacion en BD
     if (activeEvent) {
-      dispatch(eventUpdated(formValues));
+      dispatch(eventStartUpdate(formValues));
 
     } else {
       dispatch(eventStartAddNew(formValues));
