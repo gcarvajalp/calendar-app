@@ -45,7 +45,7 @@ export const startRegister = (name, email, password) => {
 export const startChecking = () => {
   return async (dispatch) => {
 
-    const resp = await fetchWithToken('renew');
+    const resp = await fetchWithToken('auth/renew');
     const body = await resp.json();
 
     if (body?.token) {
