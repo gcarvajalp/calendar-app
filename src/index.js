@@ -7,7 +7,7 @@ import './modal.css';
 import './datepicker.css';
 
 
-console.log(process.env);
+console.log(process.env.NODE_ENV);
 
 ReactDOM.render(
   <React.StrictMode>

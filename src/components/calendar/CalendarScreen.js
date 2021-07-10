@@ -66,13 +66,11 @@ const CalendarScreen = () => {
   }
 
   const onViewChange = (e) => {
-    console.log('onViewChange', e);
     localStorage.setItem('lastView', e);
     setLastView(e);
   }
 
   const onSelectSlot = (e) => {
-    console.log(e);
     dispatch(eventClearActiveEvent());
   }
 

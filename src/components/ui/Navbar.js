@@ -9,9 +9,10 @@ const Navbar = () => {
   const { name } = useSelector(state => state.auth);
 
   const handleLogout = () => {
-    //console.log('salir');
+    
     dispatch(eventLogout());
     dispatch(startLogout());
+  
   }
 
   return (

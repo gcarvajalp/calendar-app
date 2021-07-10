@@ -5,7 +5,7 @@ import { types } from "../types/types";
 
 export const startLogin = (email, password) => {
   return async (dispatch) => {
-    //console.log(email, password)
+    
     const resp = await fetchWithoutToken('auth', { email, password }, 'POST');
     const body = await resp.json();
 
