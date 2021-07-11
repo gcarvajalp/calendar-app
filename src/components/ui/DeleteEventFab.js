@@ -5,10 +5,10 @@ import { eventStartDelete } from '../../actions/events';
 const DeleteEventFab = () => {
 
   const dispatch = useDispatch();
-  const { activeEvent } = useSelector(state => state.calendar)
+  //const { activeEvent } = useSelector(state => state.calendar)
 
   const handleClickDelete = () => {
-    dispatch(eventStartDelete(activeEvent));
+    dispatch(eventStartDelete());
   }
 
   return (
