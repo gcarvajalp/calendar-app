@@ -25,6 +25,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 const now = moment().minutes(0).seconds(0).add(1, 'hours');
 const nowPlus1 = now.clone().add(1, 'hours');
+
 const initEvent = {
   title: '',
   notes: '',
@@ -124,7 +125,9 @@ const CalendarModal = () => {
         style={customStyles}
         closeTimeoutMS={200}
         className="modal"
-        overlayClassName="modal-fondo">
+        overlayClassName="modal-fondo"
+        ariaHideApp={ !process.env.NODE_ENV === 'test' }
+        >
 
         <h2>
           {(activeEvent) ? 'Editar Elemento' : 'Nuevo Elemento'}
